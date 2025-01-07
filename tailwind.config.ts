@@ -11,6 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        sign: "#00264D",
+        signHover: "#BFD5EB",
+        login: "#CFD9DE",
+      },
+      backgroundImage: {
+        "main-bg": "url('/images/color-1909977_1280.webp')",
       },
     },
   },

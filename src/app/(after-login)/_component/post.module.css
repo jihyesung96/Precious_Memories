@@ -1,0 +1,42 @@
+.container {
+  width: 250px;
+  height: 300px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* background-color: rgb(247, 249, 249); */
+}
+
+/* .container:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+} */
+
+.post {
+  cursor: pointer;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.sub {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.heart {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
