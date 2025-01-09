@@ -6,7 +6,9 @@ export function Logout() {
       <form
         action={async () => {
           "use server";
-          await signOut();
+          console.log(11111);
+
+          await signOut({ redirectTo: "/" });
         }}
       >
         <button

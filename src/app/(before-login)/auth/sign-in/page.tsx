@@ -3,6 +3,7 @@ import Image from "next/image";
 import Logo from "../../../../../public/images/Logo1.png";
 import BackButton from "../../_component/BackButton";
 import { GitHubLogin } from "../../_component/GitHubLogin";
+import { signIn } from "@/src/auth";
 
 export default function Login() {
   interface InputProps {
@@ -50,10 +51,20 @@ export default function Login() {
             Sign up
           </Link>
         </p>
-        <form className="flex-1 flex flex-col min-w-64">
+        <form
+          className="flex-1 flex flex-col min-w-64"
+          action={async (formData) => {
+            "use server";
+            await signIn("credentials", {
+              nickname: formData.get("nickname") || "",
+              email: formData.get("email") || "",
+              password: formData.get("password") || "",
+            });
+          }}
+        >
           <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
             <Label htmlFor="email" text={"Email"} />
-            <Input name="email" placeholder="you@example.com" required={true} />
+            <Input name="email" type="email" placeholder="you@example.com" required={true} />
             <div className="flex justify-between items-center">
               <Label htmlFor="password" text={"Password"} />
               <Link className="text-xs text-foreground underline hover:text-white" href="/forgot-password">

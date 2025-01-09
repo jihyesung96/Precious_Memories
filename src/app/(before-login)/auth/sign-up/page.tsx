@@ -2,6 +2,7 @@ import Link from "next/link";
 import BackButton from "../../_component/BackButton";
 import Image from "next/image";
 import Logo from "../../../../../public/images/Logo1.png";
+import { signIn } from "@/src/auth";
 
 // const signUpAction = async () => {};
 
@@ -42,23 +43,33 @@ export default function Signup() {
   };
   return (
     <div className="w-full h-screen flex justify-center items-center bg-[rgba(0,0,0,0.4)]">
-      <div className=" flex justify-center relative w-full">
-        <form className="flex flex-col lg:w-[40%] md:w-[50%] w-[70%]">
-          <div className="relative ">
-            <BackButton />
-            <div className="flex justify-center">
-              <Image src={Logo} alt="z.com로고" width={200} height={150} />
-            </div>
-            <h1 className="text-xl flex justify-center text-center font-bold">
-              가입을 완료하고 <br />
-              추억을 기록해 보아요!
-            </h1>
+      <div className=" flex flex-col justify-center items-center relative w-full">
+        <div className="relative lg:w-[40%] md:w-[50%] w-[70%]">
+          <BackButton />
+          <div className="flex justify-center">
+            <Image src={Logo} alt="z.com로고" width={200} height={150} />
           </div>
+          <h1 className="text-xl flex justify-center text-center font-bold">
+            가입을 완료하고 <br />
+            추억을 기록해 보아요!
+          </h1>
+        </div>
+        <form
+          className="flex flex-col lg:w-[40%] md:w-[50%] w-[70%]"
+          action={async (formData) => {
+            "use server";
+            await signIn("credentials", {
+              nickname: formData.get("nickname") || "",
+              email: formData.get("email") || "",
+              password: formData.get("password") || "",
+            });
+          }}
+        >
           <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
-            <Label htmlFor="email" text="Email" />
-            <Input type="text" name="email" placeholder="you@example.com" required={true} />
             <Label htmlFor="nickname" text="Nickname" />
             <Input type="text" name="nickname" placeholder="Your Nickname" required={true} />
+            <Label htmlFor="email" text="Email" />
+            <Input type="email" name="email" placeholder="you@example.com" required={true} />
             <Label htmlFor="password" text="Password" />
             <Input type="password" name="password" placeholder="Your password" minLength={6} required={true} />
             <p className="text-sm font-bold text text-foreground mb-2">

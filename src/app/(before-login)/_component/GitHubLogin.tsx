@@ -6,7 +6,7 @@ export function GitHubLogin() {
       <form
         action={async () => {
           "use server";
-          await signIn("github", { callbackUrl: "/home" });
+          await signIn("github", { redirectTo: "/home" });
         }}
       >
         <button
