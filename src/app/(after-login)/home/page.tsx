@@ -1,11 +1,10 @@
 import Post from "../_component/Post";
-import style from "./home.module.css";
 
 export default function Home() {
   return (
-    <main className={style.main}>
-      <header className={style.profile}></header>
-      <div className={style.content}>
+    <main className="w-[870px] h-screen">
+      <header className="w-full h-[92px]"></header>
+      <div className="flex justify-evenly items-center flex-wrap gap-[20px]">
         <Post />
         <Post />
         <Post />
